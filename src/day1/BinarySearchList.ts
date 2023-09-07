@@ -1,7 +1,7 @@
 export default function bs_list(haystack: number[], needle: number): boolean {
-    let first = 0;
-    let middle = Math.trunc(haystack.length/2);
-    let last = haystack.length - 1;
+    let iFirst = 0;
+    let iMiddle = Math.trunc(haystack.length/2);
+    let iLast = haystack.length - 1;
 
     if (haystack[middle] === needle) return true;
 
