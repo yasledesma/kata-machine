@@ -1,7 +1,6 @@
 type Node<T> = {
     curr: T,
     next?: Node<T>
-    prev?: Node<T>
 }
 
 export default class Queue<T> {
@@ -17,7 +16,7 @@ export default class Queue<T> {
     }
 
     enqueue(item: T): void {
-        const node: Node<T> = { curr: item, prev: undefined, next: undefined }
+        const node: Node<T> = { curr: item, next: undefined }
 
         if (this.length === 0) {
             this.head = this.tail = node
