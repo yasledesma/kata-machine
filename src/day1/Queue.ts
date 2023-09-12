@@ -1,5 +1,6 @@
 type Node<T> = {
     curr: T,
+    next?: Node<T>
     prev?: Node<T>
 }
 
@@ -16,17 +17,17 @@ export default class Queue<T> {
     }
 
     enqueue(item: T): void {
-        const node: Node<T> = { curr: item, prev: undefined }
+        const node: Node<T> = { curr: item, prev: undefined, next: undefined }
 
         if (this.length === 0) {
             this.head = this.tail = node
-            this.tail.prev = node
+            this.head.next = this.tail
             this.length++
             return
         }
 
-        this.head ? this.head.prev = node : null
-        this.head = node
+        this.tail ? this.tail.next = node : null
+        this.tail = node
         this.length++
         return
     }
@@ -34,14 +35,14 @@ export default class Queue<T> {
     deque(): T | undefined {
         if (this.length === 0) return
 
-        const tail = this.tail?.curr
-        this.tail = this.tail?.prev
+        const head = this.head?.curr
+        this.head = this.head?.next
         this.length--
 
-        return tail
+        return head
     }
 
     peek(): T | undefined {
-        return this.tail?.curr
+        return this.head?.curr
     }
 }
