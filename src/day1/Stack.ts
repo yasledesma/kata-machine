@@ -26,13 +26,11 @@ export default class Stack<T> {
     }
 
     pop(): T | undefined {
+        if (this.length === 0) return
+            
         const val = this.head?.curr
         this.head = this.head?.next
-
-        if (this.length > 0) {
-            this.length--
-        }
-
+        this.length--
         return val
     }
 
